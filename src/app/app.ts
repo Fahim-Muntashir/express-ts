@@ -8,6 +8,25 @@ app.use(express.json())
 app.use(express.text())
 
 
+// router
+
+const userRouter = express.Router();
+app.use('/api/v1/user', userRouter);
+
+userRouter.get('/created-user', (req: Request, res: Response) => {
+  
+  const user = req.body;
+  console.log(user);
+  res.json({
+    success: true,
+    message: "user is created succesfully",
+    data:"user",
+  })
+})
+
+
+
+
 const logger = (req: Request,res: Response, next: NextFunction) => { 
   console.log(req.);
   next();
